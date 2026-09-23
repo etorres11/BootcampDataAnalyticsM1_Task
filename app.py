@@ -14,7 +14,7 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-PARTICIPANTE = "Milka Camacho"
+INGENIERO = "Eder Torres"
 PROGRAMA = "Bootcamp Data Analytics for Oil & Gas"
 APP_TITLE = "Oil & Gas Engineering Analytics"
 
