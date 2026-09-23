@@ -26,14 +26,14 @@ GLOBAL_CSS = r"""
 <style>
 :root {
     /* Paleta inspirada en crudos parafínicos / verde petróleo */
-    --bg: #13261D;
-    --bg-2: #193126;
-    --panel: rgba(29, 55, 42, 0.94);
-    --panel-2: rgba(38, 69, 52, 0.88);
-    --panel-soft: rgba(53, 86, 65, 0.72);
-    --line: rgba(188, 211, 173, 0.24);
-    --text: #F2F7F0;
-    --muted: #B9C8B7;
+    --bg: #E3ECD9;
+    --bg-2: #D6E4CC;
+    --panel: rgba(48, 83, 61, 0.96);
+    --panel-2: rgba(61, 99, 73, 0.92);
+    --panel-soft: rgba(224, 236, 213, 0.92);
+    --line: rgba(61, 94, 68, 0.24);
+    --text: #193326;
+    --muted: #536A5B;
     --accent: #A8D45F;
     --accent-2: #6FBF73;
     --accent-soft: #D7E9A7;
@@ -50,20 +50,20 @@ GLOBAL_CSS = r"""
 
 .stApp {
     background:
-        radial-gradient(circle at 12% 5%, rgba(168, 212, 95, 0.13), transparent 30%),
-        radial-gradient(circle at 90% 8%, rgba(111, 191, 115, 0.12), transparent 28%),
-        radial-gradient(circle at 48% 100%, rgba(215, 233, 167, 0.055), transparent 34%),
-        linear-gradient(180deg, #193126 0%, #162B21 48%, #12251C 100%);
+        radial-gradient(circle at 12% 4%, rgba(185, 211, 126, 0.34), transparent 30%),
+        radial-gradient(circle at 92% 8%, rgba(126, 176, 113, 0.24), transparent 28%),
+        radial-gradient(circle at 50% 100%, rgba(255, 250, 220, 0.42), transparent 38%),
+        linear-gradient(180deg, #EEF3E8 0%, #E2ECDD 45%, #D7E5D0 100%);
     color: var(--text);
 }
 
 [data-testid="stHeader"] {
-    background: rgba(19, 38, 29, 0.76);
+    background: rgba(238, 243, 232, 0.84);
     backdrop-filter: blur(10px);
 }
 
 [data-testid="stSidebar"] {
-    background: linear-gradient(180deg, #183125 0%, #203D2E 100%);
+    background: linear-gradient(180deg, #355E46 0%, #446F54 100%);
     border-right: 1px solid rgba(168, 212, 95, .18);
 }
 
@@ -79,6 +79,30 @@ GLOBAL_CSS = r"""
 
 h1, h2, h3 {
     letter-spacing: -0.02em;
+    color: #173C2A !important;
+}
+
+/* Contraste de textos nativos sobre el fondo claro */
+[data-testid="stMain"] [data-testid="stMarkdownContainer"] > p,
+[data-testid="stMain"] [data-testid="stWidgetLabel"] p,
+[data-testid="stMain"] label p {
+    color: #254A35 !important;
+}
+
+[data-testid="stMain"] small,
+[data-testid="stMain"] [data-testid="stCaptionContainer"] {
+    color: #58705F !important;
+}
+
+[data-testid="stExpander"] {
+    border: 1px solid rgba(55, 92, 65, .18);
+    border-radius: 12px;
+    background: rgba(247, 250, 243, .70);
+}
+
+[data-testid="stExpander"] summary p {
+    color: #234A33 !important;
+    font-weight: 750 !important;
 }
 
 .hero {
@@ -161,14 +185,14 @@ h1, h2, h3 {
 
 .section-title {
     margin: 1.6rem 0 .7rem 0;
-    color: #F7FBF4;
+    color: #183D2B;
     font-size: 1.45rem;
     font-weight: 750;
 }
 
 .section-subtitle {
     margin: -.35rem 0 1rem 0;
-    color: var(--muted);
+    color: #536B5C;
     font-size: .95rem;
 }
 
@@ -328,7 +352,7 @@ h1, h2, h3 {
     padding: .8rem .95rem;
     border-radius: 14px;
     border: 1px solid rgba(190, 214, 175, .20);
-    background: rgba(35, 65, 49, .78);
+    background: rgba(51, 87, 64, .94);
     margin: .65rem 0 1rem 0;
 }
 
@@ -348,8 +372,8 @@ h1, h2, h3 {
     padding: .9rem 1rem;
     border-radius: 14px;
     border: 1px solid rgba(168, 212, 95, .20);
-    background: rgba(34, 64, 47, .76);
-    color: #D5E0D1;
+    background: rgba(247, 250, 243, .86);
+    color: #294D37;
     font-size: .88rem;
     line-height: 1.55;
     margin-bottom: .75rem;
@@ -359,8 +383,8 @@ h1, h2, h3 {
     padding: .85rem 1rem;
     border-left: 3px solid #A8D45F;
     border-radius: 10px;
-    background: rgba(168, 212, 95, .075);
-    color: #D4DED1;
+    background: rgba(187, 211, 132, .22);
+    color: #294C38;
     font-size: .87rem;
     line-height: 1.55;
     margin: .75rem 0;
@@ -409,14 +433,43 @@ h1, h2, h3 {
 /* Inputs */
 [data-testid="stNumberInput"] input,
 [data-testid="stSelectbox"] div[data-baseweb="select"] > div {
-    background: rgba(31, 61, 44, .95);
-    color: #F4FAF0;
-    border-color: rgba(168, 212, 95, .18);
+    background: rgba(250, 252, 247, .96);
+    color: #173D2A;
+    border-color: rgba(66, 105, 75, .24);
 }
 
 /* Tabs */
 button[data-baseweb="tab"] {
-    font-weight: 750;
+    font-weight: 800;
+    color: #355B42 !important;
+}
+
+button[data-baseweb="tab"][aria-selected="true"] {
+    color: #163D29 !important;
+}
+
+[data-baseweb="tab-highlight"] {
+    background-color: #6F9E5B !important;
+}
+
+/* Radio principal y controles: texto visible sobre superficies claras */
+[data-testid="stMain"] [role="radiogroup"] label p {
+    color: #244A34 !important;
+}
+
+[data-testid="stNumberInput"] button {
+    color: #284D38 !important;
+}
+
+/* Selectores y cajas de entrada */
+[data-baseweb="input"] > div,
+[data-baseweb="base-input"] {
+    background: rgba(250,252,247,.96) !important;
+}
+
+[data-baseweb="input"] input {
+    color: #173D2A !important;
+    -webkit-text-fill-color: #173D2A !important;
 }
 
 /* Plotly */
@@ -424,7 +477,7 @@ button[data-baseweb="tab"] {
     border: 1px solid rgba(188, 211, 173, .16);
     border-radius: 16px;
     overflow: hidden;
-    background: rgba(25, 50, 37, .50);
+    background: rgba(247, 250, 243, .76);
 }
 
 @media (max-width: 900px) {
@@ -624,6 +677,49 @@ with st.sidebar:
         label_visibility="collapsed",
     )
 
+    # Reloj JavaScript persistente en el sidebar: visible en Home y Ejercicios.
+    sidebar_clock = r"""
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+    <meta charset="UTF-8" />
+    <style>
+        *{box-sizing:border-box}
+        body{margin:0;background:transparent;font-family:Inter,Arial,sans-serif}
+        .clock{
+            border:1px solid rgba(224,238,190,.38);
+            border-radius:14px;
+            padding:11px 13px 10px;
+            background:linear-gradient(135deg,rgba(29,65,43,.68),rgba(76,112,72,.58));
+            box-shadow:0 8px 20px rgba(13,39,23,.14);
+        }
+        .label{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#DDEBB9;font-weight:850}
+        #reloj{margin-top:4px;color:#FAFFD8;font-size:25px;line-height:1.05;font-weight:900;letter-spacing:.02em;font-variant-numeric:tabular-nums;text-shadow:0 0 12px rgba(214,235,148,.28)}
+        #fecha{margin-top:5px;color:#E1EBDC;font-size:10px;line-height:1.25;text-transform:capitalize}
+    </style>
+    </head>
+    <body>
+        <div class="clock">
+            <div class="label">Hora local del navegador</div>
+            <div id="reloj">--:--:--</div>
+            <div id="fecha">Sincronizando…</div>
+        </div>
+        <script>
+            function actualizarReloj() {
+                const ahora = new Date();
+                document.getElementById("reloj").innerText = ahora.toLocaleTimeString();
+                document.getElementById("fecha").innerText = ahora.toLocaleDateString('es-PE', {
+                    weekday: 'short', day: '2-digit', month: 'short', year: 'numeric'
+                });
+            }
+            actualizarReloj();
+            setInterval(actualizarReloj, 1000);
+        </script>
+    </body>
+    </html>
+    """
+    st.iframe(sidebar_clock, height=90)
+
     st.markdown("---")
     st.caption("Módulo 1 · Aplicación técnica")
     st.caption("Producción · Perforación · Reservorios")
@@ -683,10 +779,10 @@ if page == "Home":
 
     section_header(
         "Microinteracción JavaScript",
-        "Componente demostrativo solicitado en la actividad: el evento del botón se ejecuta en el navegador.",
+        "El reloj permanece visible en el menú lateral; aquí se mantiene una segunda interacción basada en un evento de clic.",
     )
 
-    # Interacción JavaScript visible. Se usa st.iframe para encapsular JS de forma estable.
+    # Segunda interacción JavaScript: cambio de insight por evento de clic.
     js_component = r"""
     <!DOCTYPE html>
     <html lang="es">
@@ -695,119 +791,30 @@ if page == "Home":
     <style>
         *{box-sizing:border-box}
         body{margin:0;background:transparent;font-family:Inter,Arial,sans-serif;color:#F4FAF0}
-        .shell{
-            display:grid;
-            grid-template-columns:minmax(170px,.55fr) minmax(0,1.45fr);
-            gap:14px;
-        }
         .card{
-            position:relative;
-            overflow:hidden;
-            border:1px solid rgba(168,212,95,.24);
-            border-radius:16px;
-            background:linear-gradient(135deg,rgba(47,82,61,.97),rgba(29,58,43,.96));
-            box-shadow:0 12px 28px rgba(4,22,11,.17);
+            display:flex;align-items:center;justify-content:space-between;gap:18px;
+            padding:15px 17px;min-height:96px;
+            border:1px solid rgba(168,212,95,.26);border-radius:16px;
+            background:linear-gradient(135deg,rgba(55,91,67,.98),rgba(38,72,52,.97));
+            box-shadow:0 12px 28px rgba(4,22,11,.14);
         }
-        .clock-card{
-            padding:15px 17px;
-            display:flex;
-            flex-direction:column;
-            justify-content:center;
-            min-height:104px;
-        }
-        .clock-label,.tag{
-            font-size:10px;
-            letter-spacing:.11em;
-            text-transform:uppercase;
-            color:#D7E9A7;
-            font-weight:850;
-        }
-        #reloj{
-            margin-top:6px;
-            color:#F8FFD5;
-            font-size:29px;
-            line-height:1;
-            font-weight:900;
-            letter-spacing:.02em;
-            font-variant-numeric:tabular-nums;
-            text-shadow:0 0 15px rgba(200,235,129,.30);
-        }
-        #fecha{
-            margin-top:7px;
-            color:#BFD0BA;
-            font-size:11px;
-        }
-        .insight-card{
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-            gap:18px;
-            padding:15px 17px;
-            min-height:104px;
-        }
-        .left{min-width:0}
-        .msg{margin-top:6px;color:#D8E3D4;font-size:13px;line-height:1.45}
-        .count{font-size:10px;color:#AEBEA9;margin-top:6px}
-        button{
-            flex:0 0 auto;
-            border:1px solid rgba(215,233,167,.28);
-            background:rgba(168,212,95,.12);
-            color:#F0F8D9;
-            padding:10px 13px;
-            border-radius:11px;
-            font-weight:780;
-            cursor:pointer;
-            transition:.22s ease;
-        }
-        button:hover{
-            transform:translateY(-2px);
-            background:rgba(168,212,95,.20);
-            border-color:rgba(215,233,167,.52);
-            box-shadow:0 0 18px rgba(168,212,95,.16);
-        }
-        .card::before{
-            content:"";
-            position:absolute;
-            inset:0;
-            pointer-events:none;
-            background:linear-gradient(115deg,transparent 0 72%,rgba(215,233,167,.06) 82%,transparent 92%);
-        }
-        @media(max-width:680px){
-            .shell{grid-template-columns:1fr}
-            .insight-card{align-items:flex-start;flex-direction:column}
-            button{width:100%}
-        }
+        .left{min-width:0}.tag{font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:#E1EFB8;font-weight:850}
+        .msg{margin-top:6px;color:#EEF5EA;font-size:13px;line-height:1.45}.count{font-size:10px;color:#C3D1BF;margin-top:6px}
+        button{flex:0 0 auto;border:1px solid rgba(215,233,167,.30);background:rgba(168,212,95,.14);color:#FAFFE4;padding:10px 13px;border-radius:11px;font-weight:780;cursor:pointer;transition:.22s ease}
+        button:hover{transform:translateY(-2px);background:rgba(168,212,95,.23);border-color:rgba(215,233,167,.56);box-shadow:0 0 18px rgba(168,212,95,.18)}
+        @media(max-width:680px){.card{align-items:flex-start;flex-direction:column}button{width:100%}}
     </style>
     </head>
     <body>
-        <div class="shell">
-            <div class="card clock-card">
-                <div class="clock-label">Hora del navegador</div>
-                <div id="reloj">--:--:--</div>
-                <div id="fecha">Sincronizando…</div>
+        <div class="card">
+            <div class="left">
+                <div class="tag">Technical Insight</div>
+                <div id="message" class="msg">Una IPR permite relacionar la presión de fondo fluyente con la capacidad de aporte del yacimiento.</div>
+                <div id="counter" class="count">Interacciones: 0</div>
             </div>
-
-            <div class="card insight-card">
-                <div class="left">
-                    <div class="tag">Technical Insight</div>
-                    <div id="message" class="msg">Una IPR permite relacionar la presión de fondo fluyente con la capacidad de aporte del yacimiento.</div>
-                    <div id="counter" class="count">Interacciones: 0</div>
-                </div>
-                <button onclick="nextInsight()">Cambiar insight</button>
-            </div>
+            <button onclick="nextInsight()">Cambiar insight</button>
         </div>
-
         <script>
-            function actualizarReloj() {
-                const ahora = new Date();
-                document.getElementById("reloj").innerText = ahora.toLocaleTimeString();
-                document.getElementById("fecha").innerText = ahora.toLocaleDateString('es-PE', {
-                    weekday: 'long', day: '2-digit', month: 'long', year: 'numeric'
-                });
-            }
-            actualizarReloj();
-            setInterval(actualizarReloj, 1000);
-
             const insights = [
                 'Una IPR permite relacionar la presión de fondo fluyente con la capacidad de aporte del yacimiento.',
                 'En hidrostática de perforación, la presión depende de la TVD porque representa la altura vertical real de la columna de fluido.',
@@ -825,7 +832,7 @@ if page == "Home":
     </body>
     </html>
     """
-    st.iframe(js_component, height=132)
+    st.iframe(js_component, height=112)
 
     section_header("Diseño orientado a evaluación", "Implementación pensada para evidenciar el cumplimiento técnico y visual de la rúbrica.")
     render_result_cards(
