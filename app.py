@@ -25,39 +25,50 @@ APP_TITLE = "Oil & Gas Engineering Analytics"
 GLOBAL_CSS = r"""
 <style>
 :root {
-    --bg: #07111f;
-    --panel: rgba(15, 29, 46, 0.82);
-    --panel-2: rgba(18, 38, 59, 0.74);
-    --line: rgba(148, 163, 184, 0.18);
-    --text: #e5edf7;
-    --muted: #93a4b8;
-    --accent: #2dd4bf;
-    --accent-2: #38bdf8;
-    --good: #22c55e;
-    --warn: #f59e0b;
-    --bad: #ef4444;
+    /* Paleta inspirada en crudos parafínicos / verde petróleo */
+    --bg: #13261D;
+    --bg-2: #193126;
+    --panel: rgba(29, 55, 42, 0.94);
+    --panel-2: rgba(38, 69, 52, 0.88);
+    --panel-soft: rgba(53, 86, 65, 0.72);
+    --line: rgba(188, 211, 173, 0.24);
+    --text: #F2F7F0;
+    --muted: #B9C8B7;
+    --accent: #A8D45F;
+    --accent-2: #6FBF73;
+    --accent-soft: #D7E9A7;
+    --amber: #F2C14E;
+    --good: #8ED081;
+    --warn: #F2C14E;
+    --bad: #FF7B72;
+
+    /* Controles del borde animado */
+    --card-border-speed: 7s;
+    --card-glow-opacity: .48;
+    --card-glow-blur: 18px;
 }
 
 .stApp {
     background:
-        radial-gradient(circle at 10% 5%, rgba(45, 212, 191, 0.10), transparent 28%),
-        radial-gradient(circle at 92% 8%, rgba(56, 189, 248, 0.09), transparent 25%),
-        linear-gradient(180deg, #07111f 0%, #091523 48%, #08111d 100%);
+        radial-gradient(circle at 12% 5%, rgba(168, 212, 95, 0.13), transparent 30%),
+        radial-gradient(circle at 90% 8%, rgba(111, 191, 115, 0.12), transparent 28%),
+        radial-gradient(circle at 48% 100%, rgba(215, 233, 167, 0.055), transparent 34%),
+        linear-gradient(180deg, #193126 0%, #162B21 48%, #12251C 100%);
     color: var(--text);
 }
 
 [data-testid="stHeader"] {
-    background: rgba(7, 17, 31, 0.72);
+    background: rgba(19, 38, 29, 0.76);
     backdrop-filter: blur(10px);
 }
 
 [data-testid="stSidebar"] {
-    background: linear-gradient(180deg, #07111f 0%, #0a1726 100%);
-    border-right: 1px solid var(--line);
+    background: linear-gradient(180deg, #183125 0%, #203D2E 100%);
+    border-right: 1px solid rgba(168, 212, 95, .18);
 }
 
 [data-testid="stSidebar"] * {
-    color: #dce8f4;
+    color: #ECF4E8;
 }
 
 .block-container {
@@ -74,12 +85,12 @@ h1, h2, h3 {
     position: relative;
     overflow: hidden;
     padding: 2.15rem 2.3rem;
-    border: 1px solid rgba(45, 212, 191, 0.22);
+    border: 1px solid rgba(168, 212, 95, 0.24);
     border-radius: 24px;
     background:
-        linear-gradient(135deg, rgba(16, 41, 62, 0.96), rgba(8, 25, 41, 0.94)),
-        radial-gradient(circle at top right, rgba(45, 212, 191, 0.20), transparent 32%);
-    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.28);
+        linear-gradient(135deg, rgba(43, 76, 57, 0.97), rgba(25, 51, 38, 0.96)),
+        radial-gradient(circle at top right, rgba(168, 212, 95, 0.20), transparent 34%);
+    box-shadow: 0 22px 60px rgba(4, 18, 10, 0.25);
     margin-bottom: 1.25rem;
 }
 
@@ -90,9 +101,9 @@ h1, h2, h3 {
     height: 260px;
     right: -90px;
     top: -120px;
-    border: 1px solid rgba(56, 189, 248, 0.20);
+    border: 1px solid rgba(215, 233, 167, 0.18);
     border-radius: 50%;
-    box-shadow: 0 0 0 34px rgba(45, 212, 191, 0.035), 0 0 0 68px rgba(56, 189, 248, 0.025);
+    box-shadow: 0 0 0 34px rgba(168, 212, 95, 0.035), 0 0 0 68px rgba(111, 191, 115, 0.025);
 }
 
 .eyebrow {
@@ -100,10 +111,10 @@ h1, h2, h3 {
     align-items: center;
     gap: .55rem;
     padding: .38rem .72rem;
-    border: 1px solid rgba(45, 212, 191, 0.24);
+    border: 1px solid rgba(168, 212, 95, 0.28);
     border-radius: 999px;
-    background: rgba(45, 212, 191, 0.07);
-    color: #99f6e4;
+    background: rgba(168, 212, 95, 0.09);
+    color: #E0F1B8;
     font-size: .78rem;
     font-weight: 700;
     letter-spacing: .08em;
@@ -115,11 +126,11 @@ h1, h2, h3 {
     font-size: clamp(2.15rem, 4vw, 3.65rem);
     line-height: 1.02;
     font-weight: 800;
-    color: #f7fbff;
+    color: #FBFFF8;
 }
 
 .hero-title span {
-    background: linear-gradient(90deg, #5eead4, #7dd3fc);
+    background: linear-gradient(90deg, #D7E9A7, #91D18B, #E6F2B8);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -127,7 +138,7 @@ h1, h2, h3 {
 .hero-copy {
     max-width: 900px;
     margin: 0;
-    color: #b8c8da;
+    color: #D1DDCE;
     font-size: 1.05rem;
     line-height: 1.7;
 }
@@ -142,15 +153,15 @@ h1, h2, h3 {
 .identity-pill {
     padding: .58rem .78rem;
     border-radius: 12px;
-    border: 1px solid rgba(148, 163, 184, 0.16);
-    background: rgba(255,255,255,0.035);
-    color: #dbeafe;
+    border: 1px solid rgba(215, 233, 167, 0.17);
+    background: rgba(255,255,255,0.045);
+    color: #F0F7EC;
     font-size: .88rem;
 }
 
 .section-title {
     margin: 1.6rem 0 .7rem 0;
-    color: #f4f8fc;
+    color: #F7FBF4;
     font-size: 1.45rem;
     font-weight: 750;
 }
@@ -168,23 +179,66 @@ h1, h2, h3 {
     margin: .35rem 0 1.1rem 0;
 }
 
+/* ==========================================================
+   TARJETAS CON BORDE ANIMADO
+   Controla velocidad y brillo desde :root:
+   --card-border-speed / --card-glow-opacity / --card-glow-blur
+   ========================================================== */
+@property --border-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
 .feature-card, .result-card, .info-card {
-    border: 1px solid var(--line);
+    position: relative;
+    border: 1.4px solid transparent;
     border-radius: 18px;
-    background: linear-gradient(180deg, rgba(19, 37, 56, 0.86), rgba(12, 27, 43, 0.80));
-    box-shadow: 0 12px 32px rgba(0,0,0,.18);
+    background:
+        linear-gradient(180deg, rgba(43, 76, 57, 0.96), rgba(29, 56, 42, 0.94)) padding-box,
+        conic-gradient(
+            from var(--border-angle),
+            rgba(215,233,167,.18) 0deg,
+            #A8D45F 55deg,
+            #6FBF73 105deg,
+            rgba(215,233,167,.16) 155deg,
+            rgba(215,233,167,.08) 220deg,
+            #D7E9A7 285deg,
+            rgba(215,233,167,.18) 360deg
+        ) border-box;
+    box-shadow: 0 12px 32px rgba(3, 17, 9, .18);
+    animation: cardBorderSpin var(--card-border-speed) linear infinite;
+    transition: transform .22s ease, box-shadow .35s ease, filter .35s ease;
+}
+
+.feature-card:hover,
+.result-card:hover,
+.info-card:hover {
+    box-shadow:
+        0 18px 42px rgba(7, 32, 17, .30),
+        0 0 var(--card-glow-blur) rgba(168, 212, 95, var(--card-glow-opacity)),
+        0 0 calc(var(--card-glow-blur) * 1.7) rgba(111, 191, 115, .16);
+    filter: brightness(1.045);
+}
+
+@keyframes cardBorderSpin {
+    to { --border-angle: 360deg; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .feature-card, .result-card, .info-card {
+        animation: none;
+    }
 }
 
 .feature-card {
     padding: 1.15rem 1.15rem 1rem 1.15rem;
     min-height: 170px;
-    transition: transform .20s ease, border-color .20s ease, box-shadow .20s ease;
+    transition: transform .20s ease, box-shadow .35s ease, filter .35s ease;
 }
 
 .feature-card:hover {
-    transform: translateY(-3px);
-    border-color: rgba(45, 212, 191, 0.42);
-    box-shadow: 0 16px 40px rgba(0,0,0,.23);
+    transform: translateY(-4px);
 }
 
 .feature-icon {
@@ -194,21 +248,21 @@ h1, h2, h3 {
     align-items: center;
     justify-content: center;
     border-radius: 12px;
-    background: linear-gradient(135deg, rgba(45,212,191,.15), rgba(56,189,248,.14));
-    border: 1px solid rgba(45,212,191,.18);
+    background: linear-gradient(135deg, rgba(168,212,95,.18), rgba(111,191,115,.16));
+    border: 1px solid rgba(215,233,167,.20);
     font-size: 1.15rem;
 }
 
 .feature-title {
     margin: .85rem 0 .35rem 0;
-    color: #f8fafc;
+    color: #FAFFF7;
     font-size: 1.02rem;
     font-weight: 740;
 }
 
 .feature-copy {
     margin: 0;
-    color: #9fb0c3;
+    color: #C5D3C2;
     font-size: .90rem;
     line-height: 1.55;
 }
@@ -225,41 +279,46 @@ h1, h2, h3 {
 }
 
 .result-card {
-    position: relative;
-    overflow: hidden;
-    padding: 1rem 1.05rem .95rem 1.05rem;
+    overflow: visible;
+    padding: 1.05rem 1.08rem 1rem 1.08rem;
+    min-height: 118px;
+    transition: transform .20s ease, box-shadow .35s ease, filter .35s ease;
 }
 
-.result-card::before {
-    content: "";
-    position: absolute;
-    width: 4px;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    background: linear-gradient(180deg, #2dd4bf, #38bdf8);
+.result-card:hover {
+    transform: translateY(-3px);
 }
 
 .result-label {
-    color: #9eb0c3;
+    color: #CFDACB;
     font-size: .78rem;
-    font-weight: 700;
+    font-weight: 800;
     text-transform: uppercase;
     letter-spacing: .055em;
 }
 
+/* Números de cálculo con alta visibilidad */
 .result-value {
-    margin-top: .28rem;
-    color: #f8fafc;
-    font-size: 1.65rem;
-    line-height: 1.15;
-    font-weight: 800;
+    display: inline-block;
+    margin-top: .34rem;
+    padding: .14rem .38rem .18rem .38rem;
+    border-radius: 9px;
+    color: #F8FFD5;
+    background: linear-gradient(90deg, rgba(168,212,95,.15), rgba(215,233,167,.08));
+    border: 1px solid rgba(215,233,167,.13);
+    font-size: clamp(1.72rem, 2.35vw, 2.15rem);
+    line-height: 1.12;
+    font-weight: 900;
+    letter-spacing: -.02em;
+    text-shadow: 0 0 14px rgba(200, 235, 129, .34);
+    font-variant-numeric: tabular-nums;
 }
 
 .result-unit {
-    color: #8fa2b8;
-    font-size: .76rem;
-    margin-top: .25rem;
+    color: #B8C8B4;
+    font-size: .78rem;
+    font-weight: 650;
+    margin-top: .34rem;
 }
 
 .status-box {
@@ -268,8 +327,8 @@ h1, h2, h3 {
     gap: .65rem;
     padding: .8rem .95rem;
     border-radius: 14px;
-    border: 1px solid var(--line);
-    background: rgba(12, 26, 42, .72);
+    border: 1px solid rgba(190, 214, 175, .20);
+    background: rgba(35, 65, 49, .78);
     margin: .65rem 0 1rem 0;
 }
 
@@ -280,17 +339,17 @@ h1, h2, h3 {
     box-shadow: 0 0 18px currentColor;
 }
 
-.status-good { color: #4ade80; }
-.status-warn { color: #fbbf24; }
-.status-bad { color: #f87171; }
-.status-info { color: #67e8f9; }
+.status-good { color: #A8E08E; }
+.status-warn { color: #F2C14E; }
+.status-bad { color: #FF8A80; }
+.status-info { color: #B7DF74; }
 
 .formula-card {
     padding: .9rem 1rem;
     border-radius: 14px;
-    border: 1px solid rgba(56, 189, 248, .16);
-    background: rgba(8, 24, 39, .68);
-    color: #aebfd0;
+    border: 1px solid rgba(168, 212, 95, .20);
+    background: rgba(34, 64, 47, .76);
+    color: #D5E0D1;
     font-size: .88rem;
     line-height: 1.55;
     margin-bottom: .75rem;
@@ -298,25 +357,26 @@ h1, h2, h3 {
 
 .note-box {
     padding: .85rem 1rem;
-    border-left: 3px solid #38bdf8;
+    border-left: 3px solid #A8D45F;
     border-radius: 10px;
-    background: rgba(56, 189, 248, .065);
-    color: #b9c9da;
+    background: rgba(168, 212, 95, .075);
+    color: #D4DED1;
     font-size: .87rem;
     line-height: 1.55;
     margin: .75rem 0;
 }
 
 .sidebar-brand {
+    position: relative;
     padding: .95rem 1rem;
-    border: 1px solid rgba(45, 212, 191, .20);
+    border: 1px solid rgba(168, 212, 95, .22);
     border-radius: 16px;
-    background: linear-gradient(145deg, rgba(15, 40, 58, .86), rgba(8, 27, 43, .90));
+    background: linear-gradient(145deg, rgba(45, 80, 59, .92), rgba(29, 58, 43, .94));
     margin: .35rem 0 1rem 0;
 }
 
 .sidebar-brand .kicker {
-    color: #5eead4;
+    color: #D7E9A7;
     font-size: .70rem;
     font-weight: 800;
     letter-spacing: .10em;
@@ -325,14 +385,14 @@ h1, h2, h3 {
 
 .sidebar-brand .name {
     margin-top: .28rem;
-    color: #f8fafc;
+    color: #FBFFF8;
     font-size: 1.05rem;
     font-weight: 780;
 }
 
 .sidebar-brand .program {
     margin-top: .2rem;
-    color: #8fa4ba;
+    color: #BDCCB8;
     font-size: .77rem;
     line-height: 1.4;
 }
@@ -340,29 +400,31 @@ h1, h2, h3 {
 .footer {
     margin-top: 2.2rem;
     padding-top: 1rem;
-    border-top: 1px solid rgba(148, 163, 184, .13);
+    border-top: 1px solid rgba(188, 211, 173, .16);
     text-align: center;
-    color: #71849a;
+    color: #9EAF9A;
     font-size: .78rem;
 }
 
 /* Inputs */
 [data-testid="stNumberInput"] input,
 [data-testid="stSelectbox"] div[data-baseweb="select"] > div {
-    background: rgba(10, 26, 42, .92);
+    background: rgba(31, 61, 44, .95);
+    color: #F4FAF0;
+    border-color: rgba(168, 212, 95, .18);
 }
 
 /* Tabs */
 button[data-baseweb="tab"] {
-    font-weight: 700;
+    font-weight: 750;
 }
 
 /* Plotly */
 [data-testid="stPlotlyChart"] {
-    border: 1px solid rgba(148, 163, 184, .12);
+    border: 1px solid rgba(188, 211, 173, .16);
     border-radius: 16px;
     overflow: hidden;
-    background: rgba(8, 22, 36, .45);
+    background: rgba(25, 50, 37, .50);
 }
 
 @media (max-width: 900px) {
@@ -416,8 +478,8 @@ def render_status(text: str, detail: str, tone: str = "info") -> None:
         <div class="status-box">
             <div class="status-dot {tone_class}"></div>
             <div>
-                <div style="font-weight:750;color:#f4f8fc;">{text}</div>
-                <div style="font-size:.84rem;color:#8fa2b8;margin-top:.12rem;">{detail}</div>
+                <div style="font-weight:750;color:#F6FBF2;">{text}</div>
+                <div style="font-size:.84rem;color:#B8C8B4;margin-top:.12rem;">{detail}</div>
             </div>
         </div>
         """,
@@ -427,12 +489,12 @@ def render_status(text: str, detail: str, tone: str = "info") -> None:
 
 def oilgas_plot_layout(fig: go.Figure, title: str, x_title: str, y_title: str) -> go.Figure:
     fig.update_layout(
-        title=dict(text=title, x=0.02, xanchor="left", font=dict(size=18, color="#edf6ff")),
+        title=dict(text=title, x=0.02, xanchor="left", font=dict(size=18, color="#F2F7F0")),
         xaxis_title=x_title,
         yaxis_title=y_title,
         paper_bgcolor="rgba(0,0,0,0)",
-        plot_bgcolor="rgba(7,17,31,0.25)",
-        font=dict(color="#c9d7e6"),
+        plot_bgcolor="rgba(24,49,36,0.42)",
+        font=dict(color="#D5E0D1"),
         margin=dict(l=50, r=25, t=65, b=50),
         legend=dict(
             orientation="h",
@@ -442,10 +504,10 @@ def oilgas_plot_layout(fig: go.Figure, title: str, x_title: str, y_title: str) -
             x=1,
             bgcolor="rgba(0,0,0,0)",
         ),
-        hoverlabel=dict(bgcolor="#0f2236", font_color="#f8fafc"),
+        hoverlabel=dict(bgcolor="#264735", font_color="#F8FFF4"),
     )
-    fig.update_xaxes(gridcolor="rgba(148,163,184,0.12)", zeroline=False)
-    fig.update_yaxes(gridcolor="rgba(148,163,184,0.12)", zeroline=False)
+    fig.update_xaxes(gridcolor="rgba(188,211,173,0.15)", zeroline=False)
+    fig.update_yaxes(gridcolor="rgba(188,211,173,0.15)", zeroline=False)
     return fig
 
 
@@ -627,26 +689,125 @@ if page == "Home":
     # Interacción JavaScript visible. Se usa st.iframe para encapsular JS de forma estable.
     js_component = r"""
     <!DOCTYPE html>
-    <html>
+    <html lang="es">
     <head>
+    <meta charset="UTF-8" />
     <style>
-        *{box-sizing:border-box} body{margin:0;background:transparent;font-family:Inter,Arial,sans-serif;color:#eaf2fb}
-        .box{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px 18px;border:1px solid rgba(45,212,191,.22);border-radius:16px;background:linear-gradient(135deg,rgba(16,40,59,.96),rgba(8,25,41,.96));}
-        .left{min-width:0}.tag{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:#5eead4;font-weight:800}.msg{margin-top:5px;color:#c7d6e6;font-size:14px;line-height:1.45}.count{font-size:11px;color:#7f93aa;margin-top:5px}
-        button{flex:0 0 auto;border:1px solid rgba(94,234,212,.26);background:rgba(45,212,191,.10);color:#ccfbf1;padding:10px 14px;border-radius:11px;font-weight:750;cursor:pointer;transition:.18s ease}
-        button:hover{transform:translateY(-1px);background:rgba(45,212,191,.17);border-color:rgba(94,234,212,.45)}
+        *{box-sizing:border-box}
+        body{margin:0;background:transparent;font-family:Inter,Arial,sans-serif;color:#F4FAF0}
+        .shell{
+            display:grid;
+            grid-template-columns:minmax(170px,.55fr) minmax(0,1.45fr);
+            gap:14px;
+        }
+        .card{
+            position:relative;
+            overflow:hidden;
+            border:1px solid rgba(168,212,95,.24);
+            border-radius:16px;
+            background:linear-gradient(135deg,rgba(47,82,61,.97),rgba(29,58,43,.96));
+            box-shadow:0 12px 28px rgba(4,22,11,.17);
+        }
+        .clock-card{
+            padding:15px 17px;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            min-height:104px;
+        }
+        .clock-label,.tag{
+            font-size:10px;
+            letter-spacing:.11em;
+            text-transform:uppercase;
+            color:#D7E9A7;
+            font-weight:850;
+        }
+        #reloj{
+            margin-top:6px;
+            color:#F8FFD5;
+            font-size:29px;
+            line-height:1;
+            font-weight:900;
+            letter-spacing:.02em;
+            font-variant-numeric:tabular-nums;
+            text-shadow:0 0 15px rgba(200,235,129,.30);
+        }
+        #fecha{
+            margin-top:7px;
+            color:#BFD0BA;
+            font-size:11px;
+        }
+        .insight-card{
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:18px;
+            padding:15px 17px;
+            min-height:104px;
+        }
+        .left{min-width:0}
+        .msg{margin-top:6px;color:#D8E3D4;font-size:13px;line-height:1.45}
+        .count{font-size:10px;color:#AEBEA9;margin-top:6px}
+        button{
+            flex:0 0 auto;
+            border:1px solid rgba(215,233,167,.28);
+            background:rgba(168,212,95,.12);
+            color:#F0F8D9;
+            padding:10px 13px;
+            border-radius:11px;
+            font-weight:780;
+            cursor:pointer;
+            transition:.22s ease;
+        }
+        button:hover{
+            transform:translateY(-2px);
+            background:rgba(168,212,95,.20);
+            border-color:rgba(215,233,167,.52);
+            box-shadow:0 0 18px rgba(168,212,95,.16);
+        }
+        .card::before{
+            content:"";
+            position:absolute;
+            inset:0;
+            pointer-events:none;
+            background:linear-gradient(115deg,transparent 0 72%,rgba(215,233,167,.06) 82%,transparent 92%);
+        }
+        @media(max-width:680px){
+            .shell{grid-template-columns:1fr}
+            .insight-card{align-items:flex-start;flex-direction:column}
+            button{width:100%}
+        }
     </style>
     </head>
     <body>
-        <div class="box">
-            <div class="left">
-                <div class="tag">Technical Insight</div>
-                <div id="message" class="msg">Una IPR permite relacionar la presión de fondo fluyente con la capacidad de aporte del yacimiento.</div>
-                <div id="counter" class="count">Interacciones: 0</div>
+        <div class="shell">
+            <div class="card clock-card">
+                <div class="clock-label">Hora del navegador</div>
+                <div id="reloj">--:--:--</div>
+                <div id="fecha">Sincronizando…</div>
             </div>
-            <button onclick="nextInsight()">Cambiar insight</button>
+
+            <div class="card insight-card">
+                <div class="left">
+                    <div class="tag">Technical Insight</div>
+                    <div id="message" class="msg">Una IPR permite relacionar la presión de fondo fluyente con la capacidad de aporte del yacimiento.</div>
+                    <div id="counter" class="count">Interacciones: 0</div>
+                </div>
+                <button onclick="nextInsight()">Cambiar insight</button>
+            </div>
         </div>
+
         <script>
+            function actualizarReloj() {
+                const ahora = new Date();
+                document.getElementById("reloj").innerText = ahora.toLocaleTimeString();
+                document.getElementById("fecha").innerText = ahora.toLocaleDateString('es-PE', {
+                    weekday: 'long', day: '2-digit', month: 'long', year: 'numeric'
+                });
+            }
+            actualizarReloj();
+            setInterval(actualizarReloj, 1000);
+
             const insights = [
                 'Una IPR permite relacionar la presión de fondo fluyente con la capacidad de aporte del yacimiento.',
                 'En hidrostática de perforación, la presión depende de la TVD porque representa la altura vertical real de la columna de fluido.',
@@ -664,7 +825,7 @@ if page == "Home":
     </body>
     </html>
     """
-    st.iframe(js_component, height=118)
+    st.iframe(js_component, height=132)
 
     section_header("Diseño orientado a evaluación", "Implementación pensada para evidenciar el cumplimiento técnico y visual de la rúbrica.")
     render_result_cards(
@@ -754,7 +915,7 @@ else:
                         y=df_ipr["Pwf_psi"],
                         mode="lines",
                         name="Curva IPR",
-                        line=dict(width=3, color="#2dd4bf"),
+                        line=dict(width=3, color="#A8D45F"),
                         hovertemplate="qₒ = %{x:,.1f} STB/d<br>Pwf = %{y:,.0f} psi<extra></extra>",
                     )
                 )
@@ -764,7 +925,7 @@ else:
                         y=[pwf],
                         mode="markers",
                         name="Punto ingresado",
-                        marker=dict(size=13, color="#f59e0b", line=dict(width=2, color="#fff7ed")),
+                        marker=dict(size=13, color="#F2C14E", line=dict(width=2, color="#FFF7D6")),
                         hovertemplate="Punto de operación<br>qₒ = %{x:,.1f} STB/d<br>Pwf = %{y:,.0f} psi<extra></extra>",
                     )
                 )
@@ -774,11 +935,11 @@ else:
                         y=[pb],
                         mode="markers",
                         name="Punto de burbuja",
-                        marker=dict(size=10, color="#38bdf8"),
+                        marker=dict(size=10, color="#76C47B"),
                         hovertemplate="Punto de burbuja<br>qᵦ = %{x:,.1f} STB/d<br>Pᵦ = %{y:,.0f} psi<extra></extra>",
                     )
                 )
-                fig_ipr.add_hline(y=pb, line_dash="dash", line_color="rgba(56,189,248,.55)")
+                fig_ipr.add_hline(y=pb, line_dash="dash", line_color="rgba(168,212,95,.58)")
                 oilgas_plot_layout(fig_ipr, "Curva IPR compuesta", "Caudal de petróleo, qₒ [STB/d]", "Pwf [psi]")
                 fig_ipr.update_yaxes(range=[0, pr * 1.03])
                 st.plotly_chart(fig_ipr, use_container_width=True, config={"displaylogo": False})
@@ -857,7 +1018,7 @@ else:
                         y=pressure,
                         mode="lines",
                         name="P. hidrostática",
-                        line=dict(width=3, color="#38bdf8"),
+                        line=dict(width=3, color="#7BCB82"),
                         hovertemplate="TVD = %{x:,.0f} ft<br>Pₕ = %{y:,.0f} psi<extra></extra>",
                     )
                 )
@@ -867,14 +1028,14 @@ else:
                         y=[ph],
                         mode="markers",
                         name="Punto calculado",
-                        marker=dict(size=13, color="#2dd4bf", line=dict(width=2, color="#ecfeff")),
+                        marker=dict(size=13, color="#C7E879", line=dict(width=2, color="#F7FFE6")),
                         hovertemplate="TVD = %{x:,.0f} ft<br>Pₕ = %{y:,.0f} psi<extra></extra>",
                     )
                 )
                 fig_h.add_hline(
                     y=pform,
                     line_dash="dash",
-                    line_color="rgba(245,158,11,.70)",
+                    line_color="rgba(242,193,78,.78)",
                     annotation_text="Pform",
                     annotation_position="top left",
                 )
@@ -945,7 +1106,7 @@ else:
                     go.Bar(
                         x=["POES", "Recuperable"],
                         y=[poes_mmstb, recoverable_mmstb],
-                        marker_color=["#38bdf8", "#2dd4bf"],
+                        marker_color=["#7BCB82", "#C7E879"],
                         text=[f"{poes_mmstb:,.2f}", f"{recoverable_mmstb:,.2f}"],
                         textposition="outside",
                         hovertemplate="%{x}<br>%{y:,.2f} MMSTB<extra></extra>",
