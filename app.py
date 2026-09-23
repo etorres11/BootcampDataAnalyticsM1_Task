@@ -582,7 +582,7 @@ if page == "Home":
                 físicas e interpretación gráfica en una interfaz web profesional.
             </p>
             <div class="identity-strip">
-                <div class="identity-pill"><b>Participante:</b> {PARTICIPANTE}</div>
+                <div class="identity-pill"><b>Participante:</b> {INGENIERO}</div>
                 <div class="identity-pill"><b>Programa:</b> {PROGRAMA}</div>
                 <div class="identity-pill"><b>Stack:</b> Python · Streamlit · HTML · CSS · JavaScript</div>
             </div>
