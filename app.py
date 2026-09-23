@@ -973,6 +973,6 @@ else:
 # FOOTER
 # ============================================================
 st.markdown(
-    f'<div class="footer">{APP_TITLE} · {PARTICIPANTE} · {PROGRAMA}</div>',
+    f'<div class="footer">{APP_TITLE} · {INGENIERO} · {PROGRAMA}</div>',
     unsafe_allow_html=True,
 )
