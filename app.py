@@ -549,7 +549,7 @@ with st.sidebar:
         <div class="sidebar-brand">
             <div class="kicker">SPE · Oil & Gas</div>
             <div class="name">{APP_TITLE}</div>
-            <div class="program">{PROGRAMA}<br>{PARTICIPANTE}</div>
+            <div class="program">{PROGRAMA}<br>{INGENIERO}</div>
         </div>
         """,
         unsafe_allow_html=True,
